@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-gj-kyH">
+                    <rect key="frame" x="0.0" y="558" width="375" height="110"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qO8-Fd-M2g">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
+                    <animations/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozk-Ed-iJY">
+                    <rect key="frame" x="32" y="32" width="32" height="32"/>
+                    <animations/>
+                    <state key="normal" image="bt_playpage_cancel_normal"/>
+                    <connections>
+                        <action selector="backButtonClick:" destination="-1" eventType="touchUpInside" id="1in-c1-FHj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.1462826794" green="0.79765731340000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="qO8-Fd-M2g" firstAttribute="leading" secondItem="6Nw-gj-kyH" secondAttribute="leading" id="8lr-ep-Z43"/>
+                <constraint firstAttribute="bottom" secondItem="qO8-Fd-M2g" secondAttribute="bottom" constant="109" id="Alj-xf-16W"/>
+                <constraint firstItem="6Nw-gj-kyH" firstAttribute="top" secondItem="qO8-Fd-M2g" secondAttribute="bottom" id="LWh-vH-wiw"/>
+                <constraint firstItem="qO8-Fd-M2g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="O98-er-Ouq"/>
+                <constraint firstItem="qO8-Fd-M2g" firstAttribute="trailing" secondItem="6Nw-gj-kyH" secondAttribute="trailing" id="TU5-IX-GgK"/>
+                <constraint firstItem="qO8-Fd-M2g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VrV-uq-iTr"/>
+                <constraint firstAttribute="bottom" secondItem="6Nw-gj-kyH" secondAttribute="bottom" constant="-1" id="vQY-Xd-jHK"/>
+                <constraint firstAttribute="trailing" secondItem="qO8-Fd-M2g" secondAttribute="trailing" id="wsb-e8-cUn"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bt_playpage_cancel_normal" width="24" height="24"/>
+    </resources>
+</document>
