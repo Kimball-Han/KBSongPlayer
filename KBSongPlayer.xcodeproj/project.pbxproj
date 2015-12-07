@@ -48,6 +48,7 @@
 		1DAE88461BD721A100FC7578 /* KBHttpNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAE88451BD721A100FC7578 /* KBHttpNetWorking.m */; };
 		1DAE88951BD76D3200FC7578 /* SongInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAE88941BD76D3200FC7578 /* SongInfoModel.m */; };
 		1DB33BBD1C0584420056237A /* BaseViewModelClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33BBC1C0584420056237A /* BaseViewModelClass.m */; };
+		1DDC996C1C113A8100F211C8 /* LocalSongModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC996A1C113A8100F211C8 /* LocalSongModel.xcdatamodeld */; };
 		1DE04D561C06FA66006BB7FF /* SongMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE04D551C06FA66006BB7FF /* SongMenuModel.m */; };
 		1DE04D591C06FAD3006BB7FF /* SongMenuVIewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE04D581C06FAD3006BB7FF /* SongMenuVIewModel.m */; };
 		1DE04D5D1C06FC07006BB7FF /* SongMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE04D5B1C06FC07006BB7FF /* SongMenuViewController.m */; };
@@ -157,6 +158,7 @@
 		1DAE88941BD76D3200FC7578 /* SongInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInfoModel.m; sourceTree = "<group>"; };
 		1DB33BBB1C0584420056237A /* BaseViewModelClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModelClass.h; sourceTree = "<group>"; };
 		1DB33BBC1C0584420056237A /* BaseViewModelClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModelClass.m; sourceTree = "<group>"; };
+		1DDC996B1C113A8100F211C8 /* LocalSongModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalSongModel.xcdatamodel; sourceTree = "<group>"; };
 		1DE04D541C06FA66006BB7FF /* SongMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongMenuModel.h; sourceTree = "<group>"; };
 		1DE04D551C06FA66006BB7FF /* SongMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongMenuModel.m; sourceTree = "<group>"; };
 		1DE04D571C06FAD3006BB7FF /* SongMenuVIewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongMenuVIewModel.h; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				1D0394F51BCCFBFD00DCF96F /* AppDelegate.m */,
 				1D6092321C0308B2007F3F87 /* KBPlayer.h */,
 				1D6092331C0308B2007F3F87 /* KBPlayer.m */,
+				1DDC996A1C113A8100F211C8 /* LocalSongModel.xcdatamodeld */,
 				1D772BDC1BD0E52F00FB8418 /* Config */,
 				1D6092281C02F865007F3F87 /* Class */,
 				1D772BE01BD0E66200FB8418 /* Http */,
@@ -752,6 +755,7 @@
 				1D0A4BBB1C08324A00CB506E /* SongerClassifyViewModel.m in Sources */,
 				1D0A4BAB1C0804CA00CB506E /* HotMenuModel.m in Sources */,
 				1DE273F01BCDEA8F000E6B41 /* GuessCell.m in Sources */,
+				1DDC996C1C113A8100F211C8 /* LocalSongModel.xcdatamodeld in Sources */,
 				1D9846201C06A2F500FE904C /* RootNavigationContoller.m in Sources */,
 				1D0A4BB71C08306C00CB506E /* SingerViewController.m in Sources */,
 				1DFFC2FB1BE2103A00298651 /* PlayerViewController.m in Sources */,
@@ -905,7 +909,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = KBSongPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.psylife.KBSongPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.psylife.KimSongPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -918,7 +922,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = KBSongPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.psylife.KBSongPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.psylife.KimSongPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1020,6 +1024,16 @@
 			);
 			currentVersion = 1D0394FE1BCCFBFE00DCF96F /* KBSongPlayer.xcdatamodel */;
 			path = KBSongPlayer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		1DDC996A1C113A8100F211C8 /* LocalSongModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1DDC996B1C113A8100F211C8 /* LocalSongModel.xcdatamodel */,
+			);
+			currentVersion = 1DDC996B1C113A8100F211C8 /* LocalSongModel.xcdatamodel */;
+			path = LocalSongModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -13,7 +13,7 @@
 #import "UrlModel.h"
 
 @interface KBPlayer : NSObject
-@property(nonatomic,copy)NSMutableArray *songArr;
+@property(nonatomic,strong)NSMutableArray *songArr;
 @property(nonatomic,retain)InfoModel *currentModel;
 @property(nonatomic,assign)NSInteger currentIndex;
 

@@ -12,13 +12,14 @@
 
 -(void)getSongInfoBy:(SongInfoModel *)model
 {
-    [KBHttpNetWorking NetRequestGETWithRequestURL:[NSString stringWithFormat:Play_SongLink_Url,[PublicClass getTimestamp],model.song_id,e] WithParameter:nil WithReturnValeuBlock:^(id returnData){
-        
+    NSString *ts=[PublicClass getTimestamp];
+    NSString *url=[NSString stringWithFormat:Play_SongLink_Url,ts,model.song_id,e];
+    
+    [KBHttpNetWorking httpJsonRequestNetWorkingWithUrlStr:url success:^(id returnData){
         NSDictionary *dict=[returnData objectForKey:@"songinfo"];
         InfoModel *model1=[[InfoModel alloc] init];
         [model1 setValuesForKeysWithDictionary:dict];
         NSMutableArray *urlArr=[NSMutableArray array];
-        
         NSArray *arr=[[returnData objectForKey:@"songurl"] objectForKey:@"url"];
         for (NSDictionary *sub in arr) {
             UrlModel *mo=[[UrlModel alloc] init];
@@ -27,10 +28,7 @@
         }
         model1.UrlArr=urlArr;
         self.returnBlock(model1);
-        
-    }WithErrorCodeBlock:^(id errorCode){
-        self.errorBlock(errorCode);
-    }WithFailureBlock:^(){
+    }fail:^(){
         self.failureBlock();
     }];
 }
