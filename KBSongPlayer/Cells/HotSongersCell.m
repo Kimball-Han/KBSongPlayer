@@ -102,7 +102,7 @@
 }
 -(void)imgBeTap:(UITapGestureRecognizer *)tap
 {
-    NSLog(@"%ld",tap.view.tag);
+    NSLog(@"%ld",(long)tap.view.tag);
 }
 //-(NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 //{

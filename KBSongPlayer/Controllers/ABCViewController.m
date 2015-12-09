@@ -23,6 +23,7 @@
     
     UIView *backView=[[UIView alloc] initWithFrame:CGRectMake(0, Screen_Height-360, Screen_Width, 360)];
     [self.view addSubview:backView];
+    
     backView.backgroundColor=[UIColor whiteColor];
     NSMutableArray *arr=[[NSMutableArray alloc] init];
     [arr addObject:@"热门"];
@@ -31,6 +32,8 @@
                         stringWithFormat:@"%c",('A'+i)]];
         
     }
+    self.view.backgroundColor=[UIColor grayColor];
+    
   
     [arr addObject:@"其他"];
     UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 39)];
@@ -57,12 +60,28 @@
 }
 -(void)click:(UIButton *)button
 {
-    self.vc.group=[button titleForState:UIControlStateNormal];
+    NSString *code=[button titleForState:UIControlStateNormal];
+    if (![code isEqualToString:@"关闭"]) {
+        self.vc.group=code;
+    }
     self.vc.offset=0;
     [self.vc getData];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIView *balckView=[self.vc.view viewWithTag:1000 ];
+    [balckView removeFromSuperview];
+    [self dismissViewControllerAnimated:YES completion:^{
+       
+    }];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

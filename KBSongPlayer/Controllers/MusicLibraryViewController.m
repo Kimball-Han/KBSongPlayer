@@ -13,7 +13,8 @@
 #import "KBHeader.h"
 @interface MusicLibraryViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic,assign) NSInteger *currentPage;
+@property (weak, nonatomic) IBOutlet UIView *lineView;
+@property (nonatomic,assign) NSInteger currentPage;
 @end
 
 @implementation MusicLibraryViewController
@@ -25,6 +26,8 @@
 }
 -(void)initUI
 {
+    self.scrollView.delegate=self;
+    self.scrollView.bounces=NO;
     SongMenuViewController *vc2=[[SongMenuViewController alloc] init];
     vc2.view.frame=CGRectMake(Screen_Width*1, 0, Screen_Width, Screen_Height-104);
     [self addChildViewController:vc2];
@@ -43,22 +46,39 @@
     self.scrollView.contentSize=CGSizeMake(Screen_Width*4, Screen_Height-104);
     self.scrollView.pagingEnabled=YES;
     self.scrollView.showsHorizontalScrollIndicator=NO;
+    self.currentPage=0;
     
 }
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    self.navigationController.navigationBarHidden=NO;
-//}
-//-(void)viewWillDisappear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBarHidden=YES;
-//    
-//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)blackButtonClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)searchButtonClick:(id)sender {
+    
+}
+
+- (IBAction)menuButtonClick:(UIButton *)sender {
+    NSInteger i=sender.tag-11;
+    NSInteger t=i-self.currentPage;
+    CGRect frame=self.lineView.frame;
+    [UIView animateWithDuration:0.2*labs(t) animations:^{
+        self.lineView.frame=CGRectMake(35*(i+1)+(Screen_Width-175)/4.0*(i), frame.origin.y, frame.size.width, frame.size.height);
+        self.scrollView.contentOffset=CGPointMake(Screen_Width*i, 0);
+    }];
+         //  [self.scrollView scrollRectToVisible:CGRectMake(, 0, Screen_Width, Screen_Height-104) animated:YES];
+   
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat s= (Screen_Width-175)/4.0;
+    CGFloat x=(Screen_Width-(70.0+s))/(3.0*Screen_Width)*scrollView.contentOffset.x+35;
+    self.currentPage=scrollView.contentOffset.x/Screen_Width;
+    CGRect frame=self.lineView.frame;
+     self.lineView.frame=CGRectMake(x, frame.origin.y, frame.size.width, frame.size.height);
 }
 
 /*

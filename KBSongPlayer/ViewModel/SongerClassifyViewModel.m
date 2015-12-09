@@ -33,7 +33,7 @@
 }
 -(void)getSingersFromArea:(NSString *)area Sex:(NSString *)sex Group:(NSString *)group Offset:(NSInteger)offset
 {
-    [KBHttpNetWorking NetRequestGETWithRequestURL:[NSString stringWithFormat:Singer_Group,offset,area,sex,group] WithParameter:nil WithReturnValeuBlock:^(id returnData){
+    [KBHttpNetWorking NetRequestGETWithRequestURL:[NSString stringWithFormat:Singer_Group,(long)offset,area,sex,group] WithParameter:nil WithReturnValeuBlock:^(id returnData){
         [self dataProcess:returnData];
     }WithErrorCodeBlock:^(id code){
         self.errorBlock(code);
