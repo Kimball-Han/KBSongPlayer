@@ -22,12 +22,16 @@
 }
 -(void)dataProcess:(id )data
 {
-    NSArray *arr=[data objectForKey:@"artist"];
     NSMutableArray *returnArr=[NSMutableArray array];
-    for (NSDictionary *dic in arr) {
-        SingerModel *model=[[SingerModel alloc] init];
-        [model setValuesForKeysWithDictionary:dic];
-        [returnArr addObject:model];
+    if ([[data objectForKey:@"artist"] isKindOfClass:[NSArray class]]) {
+        NSArray *arr=[data objectForKey:@"artist"];
+        
+        
+        for (NSDictionary *dic in arr) {
+            SingerModel *model=[[SingerModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [returnArr addObject:model];
+        }
     }
     self.returnBlock(returnArr);
 }
@@ -40,6 +44,6 @@
     }WithFailureBlock:^(){
         self.failureBlock();
     }];
-
+    
 }
 @end

@@ -66,7 +66,7 @@
     }
     self.vc.offset=0;
     [self.vc getData];
-    UIView *balckView=[self.vc.view viewWithTag:1000 ];
+    UIView *balckView=[self.vc.navigationController.view viewWithTag:1000 ];
     [balckView removeFromSuperview];
     [self dismissViewControllerAnimated:YES completion:^{
        

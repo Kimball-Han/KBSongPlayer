@@ -37,6 +37,8 @@
 		1D60922E1C02FC09007F3F87 /* InfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D60922D1C02FC09007F3F87 /* InfoModel.m */; };
 		1D6092311C030351007F3F87 /* UrlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6092301C030351007F3F87 /* UrlModel.m */; };
 		1D6092341C0308B2007F3F87 /* KBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6092331C0308B2007F3F87 /* KBPlayer.m */; };
+		1D7423041C17FE710058A06B /* LocalSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7423021C17FE710058A06B /* LocalSongsViewController.m */; };
+		1D7423051C17FE710058A06B /* LocalSongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D7423031C17FE710058A06B /* LocalSongsViewController.xib */; };
 		1D772BD41BD0D20D00FB8418 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D772BD31BD0D20D00FB8418 /* 5.png */; };
 		1D772BD71BD0D60E00FB8418 /* WeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D772BD61BD0D60E00FB8418 /* WeatherView.m */; };
 		1D772BD91BD0D63200FB8418 /* WeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D772BD81BD0D63200FB8418 /* WeatherView.xib */; };
@@ -139,6 +141,9 @@
 		1D6092301C030351007F3F87 /* UrlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlModel.m; sourceTree = "<group>"; };
 		1D6092321C0308B2007F3F87 /* KBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBPlayer.h; sourceTree = "<group>"; };
 		1D6092331C0308B2007F3F87 /* KBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBPlayer.m; sourceTree = "<group>"; };
+		1D7423011C17FE710058A06B /* LocalSongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalSongsViewController.h; sourceTree = "<group>"; };
+		1D7423021C17FE710058A06B /* LocalSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalSongsViewController.m; sourceTree = "<group>"; };
+		1D7423031C17FE710058A06B /* LocalSongsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalSongsViewController.xib; sourceTree = "<group>"; };
 		1D772BD31BD0D20D00FB8418 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		1D772BD51BD0D60E00FB8418 /* WeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherView.h; path = ../WeatherView.h; sourceTree = "<group>"; };
 		1D772BD61BD0D60E00FB8418 /* WeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherView.m; path = ../WeatherView.m; sourceTree = "<group>"; };
@@ -351,6 +356,16 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		1D7423001C17FE050058A06B /* 本地歌曲 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7423011C17FE710058A06B /* LocalSongsViewController.h */,
+				1D7423021C17FE710058A06B /* LocalSongsViewController.m */,
+				1D7423031C17FE710058A06B /* LocalSongsViewController.xib */,
+			);
+			name = "本地歌曲";
+			sourceTree = "<group>";
+		};
 		1D772BDA1BD0E52F00FB8418 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				1DE04D711C0716A1006BB7FF /* main */,
+				1D7423001C17FE050058A06B /* 本地歌曲 */,
 				1D93067D1BE3848100B4436C /* 我的喜欢 */,
 				1D93067C1BE3847000B4436C /* 音乐库 */,
 				1D93067B1BE3841B00B4436C /* 播放中心 */,
@@ -602,6 +618,11 @@
 				TargetAttributes = {
 					1D0394ED1BCCFBFD00DCF96F = {
 						CreatedOnToolsVersion = 7.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					1D0395091BCCFBFE00DCF96F = {
 						CreatedOnToolsVersion = 7.0;
@@ -643,6 +664,7 @@
 				1D0395041BCCFBFE00DCF96F /* LaunchScreen.storyboard in Resources */,
 				1DFFC2FC1BE2103A00298651 /* PlayerViewController.xib in Resources */,
 				1D772BD41BD0D20D00FB8418 /* 5.png in Resources */,
+				1D7423051C17FE710058A06B /* LocalSongsViewController.xib in Resources */,
 				1D0A4BCA1C08443A00CB506E /* SingersView.xib in Resources */,
 				1DE04D6B1C071377006BB7FF /* HotMenuViewController.xib in Resources */,
 				1DE273F21BCDEBC1000E6B41 /* GuessCell.xib in Resources */,
@@ -760,6 +782,7 @@
 				1D0A4BB71C08306C00CB506E /* SingerViewController.m in Sources */,
 				1DFFC2FB1BE2103A00298651 /* PlayerViewController.m in Sources */,
 				1DE04D5D1C06FC07006BB7FF /* SongMenuViewController.m in Sources */,
+				1D7423041C17FE710058A06B /* LocalSongsViewController.m in Sources */,
 				1D5CC13A1C0C3E1E00E1842B /* SingeInfoCell.m in Sources */,
 				1D0A4BCD1C0849C200CB506E /* SingerModel.m in Sources */,
 				1D0A4BC81C08441200CB506E /* SingersView.m in Sources */,

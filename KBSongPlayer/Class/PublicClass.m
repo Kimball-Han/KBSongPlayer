@@ -7,7 +7,7 @@
 //
 
 #import "PublicClass.h"
-
+#import "SongInfoModel.h"
 @implementation PublicClass
 +(NSString *)getTimestamp
 {
@@ -47,4 +47,39 @@
     [_dataArr addObject:arr5];
     return _dataArr;
 }
++(NSString *)songsPath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [paths objectAtIndex:0];
+    NSString *songsPath=[docPath stringByAppendingString:@"/songs"];
+  
+    return songsPath;
+}
++(NSString *)lrcsPath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [paths objectAtIndex:0];
+    
+    NSString *lrcsPath=[docPath stringByAppendingString:@"/lrcs"];
+    return lrcsPath;
+}
++(NSMutableArray *)getLocalSongs
+{
+    NSMutableArray *_dataArr=[NSMutableArray array];
+    NSFileManager *fm=[NSFileManager defaultManager];
+    NSError *error;
+    NSArray *array=   [fm subpathsOfDirectoryAtPath:[PublicClass songsPath] error:&error];
+    for (int i=0; i<array.count; i++) {
+        NSString *str=array[i];
+        NSString *name=[str lastPathComponent];
+        NSString *title=[name stringByDeletingPathExtension];
+        SongInfoModel *model=[[SongInfoModel alloc] init];
+        model.title=title;
+        model.islow=@"local";
+        model.name=name;
+        [_dataArr addObject:model];
+    }
+    return _dataArr;
+}
+
 @end

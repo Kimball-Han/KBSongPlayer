@@ -13,4 +13,7 @@
 
 +(NSString *)getTimestamp;
 +(NSMutableArray *)getSongerClassification;
++(NSString *)songsPath;
++(NSString *)lrcsPath;
++(NSMutableArray *)getLocalSongs;
 @end

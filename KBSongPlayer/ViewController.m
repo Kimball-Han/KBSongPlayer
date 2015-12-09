@@ -13,6 +13,7 @@
 #import "HomePageViewModel.h"
 #import "Window2Controller.h"
 #import "RootNavigationContoller.h"
+#import "LocalSongsViewController.h"
 #import "MusicLibraryViewController.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,WeatherDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -70,11 +71,7 @@
     [self.tableView setContentOffset:CGPointMake(0, -Screen_Width*0.75)];
     self.tableView.showsVerticalScrollIndicator=NO;
     
-    Window2Controller *vc=[[Window2Controller alloc]init];
-    vc.view.frame=CGRectMake(20, Screen_Height-80, 60, 60);
-    [self.navigationController.view addSubview:vc.view];
-    RootNavigationContoller *nv=(RootNavigationContoller *)self.navigationController;
-    nv.winVC=vc;
+
 }
 
 
@@ -85,7 +82,8 @@
     switch (Menu) {
         case KBMenuLocalMusic:
         {
-            
+            LocalSongsViewController *vc=[[LocalSongsViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case KBMenuLoadSong:

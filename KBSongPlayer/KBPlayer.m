@@ -8,11 +8,12 @@
 
 #import "KBPlayer.h"
 #import "PlayerViewModel.h"
-#import <AFSoundManager.h>
+
+#import "PublicClass.h"
 @implementation KBPlayer
 {
     PlayerViewModel *_viewModel;
-    AFSoundPlayback *_player;
+   
   
 }
 
@@ -34,8 +35,8 @@
         
         __weak typeof(self) weakSelf=self;
         [_viewModel setBlockWithReturnBlock:^(id returnData){
-            weakSelf.currentModel=returnData;
-            [weakSelf analyseModel];
+         
+            [weakSelf analyseModel:returnData];
         }withErrorBlock:^(id  errorCode){
             
         }withFailureBlock:^(){
@@ -57,15 +58,23 @@
     }else{
         _currentIndex=0;
     }
-    
+    //分析model是本地还是网络
     SongInfoModel *model=_songArr[_currentIndex];
+    //本地
+    if([model.islow isEqualToString:@"local"]){
+        AFSoundItem *item=[[AFSoundItem alloc] initWithLocalResource:model.name atPath:[PublicClass songsPath]];
+        [self playSongAndItem:item];
+    }else{
+        //网络
     [_viewModel getSongInfoBy:model];
+        
+    }
 }
 
-//分析model是本地还是网络播放
--(void)analyseModel
+//网络歌曲播放
+-(void)analyseModel:(InfoModel *)model;
 {
-    NSArray *arr=self.currentModel.UrlArr;
+    NSArray *arr=model.UrlArr;
     if (arr.count>0) {
         for (UrlModel *model in arr) {
             if (model.file_link) {
@@ -85,19 +94,69 @@
         
     [_player pause];
     _player.player=nil;
-    
     _player=nil;
-    
     _player =[[AFSoundPlayback alloc] initWithItem:item];
-    
+        __weak typeof(self) weakSelf=self;
     [_player listenFeedbackUpdatesWithBlock:^(AFSoundItem *item){
         KBLog(@"%@,%@,%ld,%ld",item.artist,item.title,(long)item.timePlayed,(long)item.duration);
+        
+        if (weakSelf.isBlack) {
+            [weakSelf configNowPlayeringInfoCenter:item];
+        }
+        
+        if (item.timePlayed==item.duration) {
+            weakSelf.currentIndex+=1;
+            [weakSelf playerSongsIndex:_currentIndex];
+        }
     }andFinishedBlock:^{
-        self.currentIndex+=1;
-        [self playerSongsIndex:_currentIndex];
+       
     }];
     }
     
 }
+/**
+ *  设置锁屏信息
+ */
+-(void)configNowPlayeringInfoCenter:(AFSoundItem *)item
+{
+    NSMutableDictionary * dict=[[NSMutableDictionary alloc] init];
+    [dict setObject:item.title forKey:MPMediaItemPropertyTitle];
+    if (item.artist) {
+          [dict setObject:item.artist forKey:MPMediaItemPropertyArtist];
+    }
+  
+//    if (item.artwork) {
+    //
+        MPMediaItemArtwork *artwork=[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"5"]];
+        [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
+   // }
+    NSInteger t=item.duration-item.timePlayed;
+    [dict setObject:[NSNumber numberWithInteger:t] forKey:MPMediaItemPropertyPlaybackDuration];
+    [dict setObject:[NSNumber numberWithInteger:item.timePlayed] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
+    
+}
+#pragma mark 播放控制
+-(void)playPreviousSong
+{
+    self.currentIndex-=1;
+    [self playerSongsIndex:_currentIndex];
+}
+-(void)play
+{
+    
+  [_player play];
+    
+}
+-(void)pause
+{
+    [_player pause];
+}
+-(void)playNextSong
+{
+    self.currentIndex+=1;
+    [self playerSongsIndex:_currentIndex];
+}
+
 
 @end

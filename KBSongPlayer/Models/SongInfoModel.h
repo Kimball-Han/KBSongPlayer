@@ -15,4 +15,6 @@
 @property(nonatomic,copy)NSString *author;
 @property(nonatomic,copy)NSString *as_mv;
 
+@property(nonatomic,copy)NSString *name;
+@property(nonatomic,copy)NSString *islow;
 @end

@@ -36,7 +36,6 @@ typedef NS_ENUM(NSInteger, AFSoundStatus) {
 
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic) AFSoundStatus status;
-
 @property (nonatomic, readonly) AFSoundItem *currentItem;
 
 -(void)play;

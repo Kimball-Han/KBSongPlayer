@@ -98,6 +98,9 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section==0) {
+        return;
+    }
     AreaSexSingersViewController *vc=[[AreaSexSingersViewController alloc] init];
     vc.name=_dataArr[indexPath.section-1][indexPath.row][@"name"];
     vc.area=_dataArr[indexPath.section-1][indexPath.row][@"area"];

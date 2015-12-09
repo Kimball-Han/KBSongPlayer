@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "KBHeader.h"
+#import "KBPlayer.h"
 #import "Window2Controller.h"
-
+#import <AVFoundation/AVFoundation.h>
 @interface AppDelegate ()
 
 @end
@@ -19,14 +20,54 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.rootNV=(UINavigationController *)self.window.rootViewController;
+    NSError* error;
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    AFSoundStatus status=[KBPlayer manager].player.status;
+    if (status==AFSoundStatusFinished||status==AFSoundStatusNotStarted||status==AFSoundStatusPaused||status==AFSoundStatusPlaying) {
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        [self becomeFirstResponder];
+        [KBPlayer manager].isBlack=YES;
+    }else{
+        [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+        [self resignFirstResponder];
+         [KBPlayer manager].isBlack=NO;
+    }
 }
 
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
+    
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlPause:
+                //点击了暂停
+                [[KBPlayer manager] pause];
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                //点击了下一首
+                [[KBPlayer manager] playNextSong];
+                break;
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                //点击了上一首
+                [[KBPlayer manager] playPreviousSong];
+                //此时需要更改歌曲信息
+                break;
+            case UIEventSubtypeRemoteControlPlay:
+                //点击了播放
+                 [[KBPlayer manager] play];
+                break;
+            default:
+                break;
+        }
+    }
+}
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

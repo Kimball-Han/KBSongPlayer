@@ -73,7 +73,14 @@
                 
                 if ([metadataItem.keySpace isEqualToString:AVMetadataKeySpaceID3]) {
                     
-                   // _artwork = [UIImage imageWithData:[[metadataItem.value copyWithZone:nil] objectForKey:@"data"]];
+                    
+                    
+                    if (![metadataItem.value  isKindOfClass:[NSData class]]) {
+                        _artwork = [UIImage imageWithData:[[metadataItem.value copyWithZone:nil] objectForKey:@"data"]];
+                    } ;
+            
+                    
+                    
                 } else if ([metadataItem.keySpace isEqualToString:AVMetadataKeySpaceiTunes]) {
                     
                     _artwork = [UIImage imageWithData:[metadataItem.value copyWithZone:nil]];
