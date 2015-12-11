@@ -35,8 +35,9 @@
         
         __weak typeof(self) weakSelf=self;
         [_viewModel setBlockWithReturnBlock:^(id returnData){
-         
+            
             [weakSelf analyseModel:returnData];
+            
         }withErrorBlock:^(id  errorCode){
             
         }withFailureBlock:^(){
@@ -124,12 +125,10 @@
     if (item.artist) {
           [dict setObject:item.artist forKey:MPMediaItemPropertyArtist];
     }
-  
-//    if (item.artwork) {
-    //
-        MPMediaItemArtwork *artwork=[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"5"]];
-        [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
-   // }
+
+    MPMediaItemArtwork *artwork=[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"5"]];
+    [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
+    
     NSInteger t=item.duration-item.timePlayed;
     [dict setObject:[NSNumber numberWithInteger:t] forKey:MPMediaItemPropertyPlaybackDuration];
     [dict setObject:[NSNumber numberWithInteger:item.timePlayed] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];

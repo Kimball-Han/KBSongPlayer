@@ -73,11 +73,15 @@
         NSString *str=array[i];
         NSString *name=[str lastPathComponent];
         NSString *title=[name stringByDeletingPathExtension];
-        SongInfoModel *model=[[SongInfoModel alloc] init];
-        model.title=title;
-        model.islow=@"local";
-        model.name=name;
-        [_dataArr addObject:model];
+        NSString *ex=[name pathExtension];
+        if ([ex isEqualToString:@"mp3"]) {
+            SongInfoModel *model=[[SongInfoModel alloc] init];
+            model.title=title;
+            model.islow=@"local";
+            model.name=name;
+            [_dataArr addObject:model];
+        }
+      
     }
     return _dataArr;
 }

@@ -85,7 +85,6 @@
     abc.modalPresentationStyle=UIModalPresentationOverCurrentContext;
     abc.view.backgroundColor=[UIColor clearColor];
     abc.vc=self;
-    
     UIView *blackView = [UIView new];
     blackView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [self.navigationController.view addSubview:blackView];

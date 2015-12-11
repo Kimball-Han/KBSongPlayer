@@ -50,6 +50,8 @@
 		1DAE88461BD721A100FC7578 /* KBHttpNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAE88451BD721A100FC7578 /* KBHttpNetWorking.m */; };
 		1DAE88951BD76D3200FC7578 /* SongInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAE88941BD76D3200FC7578 /* SongInfoModel.m */; };
 		1DB33BBD1C0584420056237A /* BaseViewModelClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33BBC1C0584420056237A /* BaseViewModelClass.m */; };
+		1DC1940C1C1AC6E00057D3CD /* LrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC194091C1AC6E00057D3CD /* LrcModel.m */; };
+		1DC1940D1C1AC6E00057D3CD /* ParsingLyrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC1940B1C1AC6E00057D3CD /* ParsingLyrics.m */; };
 		1DDC996C1C113A8100F211C8 /* LocalSongModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC996A1C113A8100F211C8 /* LocalSongModel.xcdatamodeld */; };
 		1DE04D561C06FA66006BB7FF /* SongMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE04D551C06FA66006BB7FF /* SongMenuModel.m */; };
 		1DE04D591C06FAD3006BB7FF /* SongMenuVIewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE04D581C06FAD3006BB7FF /* SongMenuVIewModel.m */; };
@@ -163,6 +165,10 @@
 		1DAE88941BD76D3200FC7578 /* SongInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInfoModel.m; sourceTree = "<group>"; };
 		1DB33BBB1C0584420056237A /* BaseViewModelClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModelClass.h; sourceTree = "<group>"; };
 		1DB33BBC1C0584420056237A /* BaseViewModelClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModelClass.m; sourceTree = "<group>"; };
+		1DC194081C1AC6E00057D3CD /* LrcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LrcModel.h; sourceTree = "<group>"; };
+		1DC194091C1AC6E00057D3CD /* LrcModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LrcModel.m; sourceTree = "<group>"; };
+		1DC1940A1C1AC6E00057D3CD /* ParsingLyrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingLyrics.h; sourceTree = "<group>"; };
+		1DC1940B1C1AC6E00057D3CD /* ParsingLyrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsingLyrics.m; sourceTree = "<group>"; };
 		1DDC996B1C113A8100F211C8 /* LocalSongModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalSongModel.xcdatamodel; sourceTree = "<group>"; };
 		1DE04D541C06FA66006BB7FF /* SongMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongMenuModel.h; sourceTree = "<group>"; };
 		1DE04D551C06FA66006BB7FF /* SongMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongMenuModel.m; sourceTree = "<group>"; };
@@ -444,6 +450,10 @@
 		1D772BDF1BD0E61700FB8418 /* library */ = {
 			isa = PBXGroup;
 			children = (
+				1DC194081C1AC6E00057D3CD /* LrcModel.h */,
+				1DC194091C1AC6E00057D3CD /* LrcModel.m */,
+				1DC1940A1C1AC6E00057D3CD /* ParsingLyrics.h */,
+				1DC1940B1C1AC6E00057D3CD /* ParsingLyrics.m */,
 				1D93067E1BE3869300B4436C /* iCarousel */,
 			);
 			name = library;
@@ -756,6 +766,7 @@
 				1D8D0CCE1C05856600C95767 /* PlayerViewModel.m in Sources */,
 				1D0394F91BCCFBFE00DCF96F /* ViewController.m in Sources */,
 				1D5CC1361C0BFCD400E1842B /* ABCViewController.m in Sources */,
+				1DC1940C1C1AC6E00057D3CD /* LrcModel.m in Sources */,
 				1DAE88951BD76D3200FC7578 /* SongInfoModel.m in Sources */,
 				1D60922E1C02FC09007F3F87 /* InfoModel.m in Sources */,
 				1D6092311C030351007F3F87 /* UrlModel.m in Sources */,
@@ -784,6 +795,7 @@
 				1DE04D5D1C06FC07006BB7FF /* SongMenuViewController.m in Sources */,
 				1D7423041C17FE710058A06B /* LocalSongsViewController.m in Sources */,
 				1D5CC13A1C0C3E1E00E1842B /* SingeInfoCell.m in Sources */,
+				1DC1940D1C1AC6E00057D3CD /* ParsingLyrics.m in Sources */,
 				1D0A4BCD1C0849C200CB506E /* SingerModel.m in Sources */,
 				1D0A4BC81C08441200CB506E /* SingersView.m in Sources */,
 				1D6092341C0308B2007F3F87 /* KBPlayer.m in Sources */,

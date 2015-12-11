@@ -9,6 +9,7 @@
 #import "Window2Controller.h"
 #import "AppDelegate.h"
 #import "PlayerViewController.h"
+#import "KBPlayer.h"
 #define self_Width self.view.bounds.size.width
 #define self_Height self.view.bounds.size.height
 #define kRotationAnimation @"RotationAnimation"
@@ -28,14 +29,31 @@
     //[self.view setBackgroundColor:[UIColor whiteColor]];
     
     _backgroundView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    
     [self.view addSubview:_backgroundView];
     _backgroundView.backgroundColor=DefaultColor;
+
+   // [[KBPlayer manager] addObserver:self forKeyPath:@"player" options: NSKeyValueObservingOptionNew context:nil];
+  
+    
 }
+
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    NSLog(@"Teacher观察的属性是：%@",keyPath);
+//
+//    NSLog(@"Student被修改后的姓名是：%@",[change objectForKey:NSKeyValueChangeNewKey]);
+//}
+//
+//// 移除监听者，开启ARC也要加上这一句
+//// 但是开启ARC在最后可以不用写[super dealloc]
+//- (void)dealloc {
+//    [[KBPlayer manager] removeObserver:self forKeyPath:@"player" context:nil];
+//    NSLog(@"销毁观察者");
+//}
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self viewBeTap];
-    self.isPlaying=!_isPlaying;
+    
 }
 
 -(void)setIsPlaying:(BOOL)isPlaying

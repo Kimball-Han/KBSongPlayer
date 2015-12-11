@@ -11,13 +11,15 @@
 #import "SongInfoModel.h"
 #import "InfoModel.h"
 #import "UrlModel.h"
-
+#import "ParsingLyrics.h"
 @interface KBPlayer : NSObject
 @property(nonatomic,strong) AFSoundPlayback * player;
-@property(nonatomic,assign) BOOL isBlack;
+
+@property(nonatomic,assign) BOOL isBlack;//远程控制判断
+
 @property(nonatomic,strong) NSMutableArray * songArr;
 @property(nonatomic,assign) NSInteger currentIndex;
-
+@property(nonatomic,strong) ParsingLyrics * parser;
 
 +(KBPlayer*)manager;
 
