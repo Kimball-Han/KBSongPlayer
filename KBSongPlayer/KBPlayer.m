@@ -13,8 +13,8 @@
 @implementation KBPlayer
 {
     PlayerViewModel *_viewModel;
-   
-  
+    
+    
 }
 
 +(KBPlayer *)manager
@@ -43,7 +43,7 @@
         }withFailureBlock:^(){
             
         }];
-       
+        
         
     }
     return self;
@@ -52,7 +52,7 @@
 -(void)playerSongsIndex:(NSInteger)index
 {
     if (index<_songArr.count) {
-         _currentIndex=index;
+        _currentIndex=index;
         if (index<0) {
             _currentIndex=_songArr.count-1;
         }
@@ -67,7 +67,7 @@
         [self playSongAndItem:item];
     }else{
         //网络
-    [_viewModel getSongInfoBy:model];
+        [_viewModel getSongInfoBy:model];
         
     }
 }
@@ -84,7 +84,7 @@
                 break;
             }
         }
-       
+        
     }
     
 }
@@ -93,25 +93,25 @@
 {
     @autoreleasepool {
         
-    [_player pause];
-    _player.player=nil;
-    _player=nil;
-    _player =[[AFSoundPlayback alloc] initWithItem:item];
+        [_player pause];
+        _player.player=nil;
+        _player=nil;
+        _player =[[AFSoundPlayback alloc] initWithItem:item];
         __weak typeof(self) weakSelf=self;
-    [_player listenFeedbackUpdatesWithBlock:^(AFSoundItem *item){
-        KBLog(@"%@,%@,%ld,%ld",item.artist,item.title,(long)item.timePlayed,(long)item.duration);
-        
-        if (weakSelf.isBlack) {
-            [weakSelf configNowPlayeringInfoCenter:item];
-        }
-        
-        if (item.timePlayed==item.duration) {
-            weakSelf.currentIndex+=1;
-            [weakSelf playerSongsIndex:_currentIndex];
-        }
-    }andFinishedBlock:^{
-       
-    }];
+        [_player listenFeedbackUpdatesWithBlock:^(AFSoundItem *item){
+            KBLog(@"%@,%@,%ld,%ld",item.artist,item.title,(long)item.timePlayed,(long)item.duration);
+            
+            if (weakSelf.isBlack) {
+                [weakSelf configNowPlayeringInfoCenter:item];
+            }
+            
+            if (item.timePlayed==item.duration) {
+                weakSelf.currentIndex+=1;
+                [weakSelf playerSongsIndex:_currentIndex];
+            }
+        }andFinishedBlock:^{
+            
+        }];
     }
     
 }
@@ -123,9 +123,9 @@
     NSMutableDictionary * dict=[[NSMutableDictionary alloc] init];
     [dict setObject:item.title forKey:MPMediaItemPropertyTitle];
     if (item.artist) {
-          [dict setObject:item.artist forKey:MPMediaItemPropertyArtist];
+        [dict setObject:item.artist forKey:MPMediaItemPropertyArtist];
     }
-
+    
     MPMediaItemArtwork *artwork=[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"5"]];
     [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
     
@@ -144,7 +144,7 @@
 -(void)play
 {
     
-  [_player play];
+    [_player play];
     
 }
 -(void)pause

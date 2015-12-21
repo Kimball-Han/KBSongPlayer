@@ -35,7 +35,7 @@
     }else{
         [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
         [self resignFirstResponder];
-         [KBPlayer manager].isBlack=NO;
+        [KBPlayer manager].isBlack=NO;
     }
 }
 
@@ -48,20 +48,32 @@
                 
             case UIEventSubtypeRemoteControlPause:
                 //点击了暂停
+                if ([KBPlayer manager].songArr.count==0) {
+                    return;
+                }
                 [[KBPlayer manager] pause];
                 break;
             case UIEventSubtypeRemoteControlNextTrack:
                 //点击了下一首
+                if ([KBPlayer manager].songArr.count==0) {
+                    return;
+                }
                 [[KBPlayer manager] playNextSong];
                 break;
             case UIEventSubtypeRemoteControlPreviousTrack:
                 //点击了上一首
+                if ([KBPlayer manager].songArr.count==0) {
+                    return;
+                }
                 [[KBPlayer manager] playPreviousSong];
                 //此时需要更改歌曲信息
                 break;
             case UIEventSubtypeRemoteControlPlay:
                 //点击了播放
-                 [[KBPlayer manager] play];
+                if ([KBPlayer manager].songArr.count==0) {
+                    return;
+                }
+                [[KBPlayer manager] play];
                 break;
             default:
                 break;

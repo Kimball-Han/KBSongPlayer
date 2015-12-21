@@ -69,12 +69,13 @@
 -(void)viewBeTap
 {
     if (_isPlaying) {
-        PlayerViewController *playervc=[[PlayerViewController alloc] init];
-        AppDelegate *app=[UIApplication sharedApplication].delegate;
-        [app.rootNV presentViewController:playervc animated:YES completion:nil];
+       
     }else{
       
     }
+    PlayerViewController *playervc=[[PlayerViewController alloc] init];
+    AppDelegate *app=[UIApplication sharedApplication].delegate;
+    [app.rootNV presentViewController:playervc animated:YES completion:nil];
 }
 -(void)animateWave
 {
