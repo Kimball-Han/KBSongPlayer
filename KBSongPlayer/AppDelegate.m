@@ -21,7 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.rootNV=(UINavigationController *)self.window.rootViewController;
     NSError* error;
-    
+//    NSString *str=[NSString stringWithFormat:@"号静安金波gg"];
+//    KBLog(@"%ld",str.length);
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     return YES;
 }

@@ -12,6 +12,8 @@
 
 -(void)getWeatherInfo:(NSString *)cityName
 {
+    
+    
     [KBHttpNetWorking httpJsonRequestNetWorkingWithUrlStr:[NSString stringWithFormat:Weather_Url,cityName]
                                                   success:^(id obj){
                                                       NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:[[obj objectForKey:@"data"] dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
